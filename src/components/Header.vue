@@ -1,6 +1,8 @@
 <template>
-  <div class="row my-5 justify-content-center">
-    <h1 class="text-center text-uppercase">NYT Books</h1>
+  <div class="container">
+    <div class="row my-3 justify-content-center">
+      <h1 class="text-center text-uppercase">NYTimes Best Sellers</h1>
+    </div>
   </div>
 </template>
 
@@ -12,7 +14,8 @@ export default {
 
 <style>
 h1 {
-  font-family: 'Libre Baskerville', serif;
   color: var(--primary);
+  font-weight: 600;
+  font-size: 3rem;
 }
 </style>

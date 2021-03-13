@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <Header />
-    <ListsContainer :lists="lists"></ListsContainer>
+    <div v-if="isLoading">
+      <Spinner />
+    </div>
+    <div v-else>
+      <ListsContainer :lists="lists" />
+    </div>
   </div>
 </template>
 
@@ -9,19 +14,21 @@
 import axios from 'axios';
 import Header from './components/Header.vue';
 import ListsContainer from './components/ListsContainer.vue';
+import Spinner from './components/Spinner.vue';
 
 const API_KEY = 'hDbHV2PLk0RpGABiH2YmctongMla01dX';
 
 export default {
   name: 'App',
-  components: { Header, ListsContainer },
+  components: { Header, ListsContainer, Spinner },
   data() {
     return {
       lists: [],
+      isLoading: true,
     };
   },
   methods: {
-    // brings the first 10 lists from the API
+    // gets lists results from the API
     onLoad() {
       axios
         .get(
@@ -29,6 +36,7 @@ export default {
         )
         .then((response) => {
           this.lists = response.data.results.slice(0, 10);
+          this.isLoading = false;
         });
     },
   },
@@ -43,15 +51,18 @@ export default {
 Text: Source Sans Pro: 300, 400, 700 */
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+Pro:wght@300;400;700&display=swap');
 :root {
-  --background: #fbf8ff;
+  --background: #fff;
+  --background-grey: #fafafa;
   --primary: #4a47a3;
   --contrast: #00c89a;
-  --black: #181818;
-  --grey: #393742;
+  --black: #393746;
 }
 body {
   font-family: 'Source Sans Pro', sans-serif;
   background-color: var(--background);
-  color: var(--grey);
+  color: var(--black);
+}
+#app {
+  width: 100vw;
 }
 </style>

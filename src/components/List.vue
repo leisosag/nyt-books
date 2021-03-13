@@ -1,6 +1,6 @@
 <template>
   <button @click="onClick(list.list_name_encoded)" class="btn-list">
-    {{ list.list_name }}
+    <i class="fas fa-book-open mr-1"></i>{{ list.list_name }}
   </button>
 </template>
 
@@ -12,19 +12,30 @@ export default {
   },
   methods: {
     onClick(value) {
-      console.log(value);
+      this.$emit('selectedList', value);
     },
   },
 };
 </script>
 
 <style scoped>
+button {
+  padding: 0.8rem;
+}
 .btn-list {
-  background-color: var(--primary);
-  color: var(--white);
+  background-color: #f0f0f0;
+  color: var(--black);
+  border-radius: 0.8rem;
   border: none;
-  min-height: 5rem;
-  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*min-height: 4rem;*/
+}
+.fa-book-open {
+  background-color: var(--white);
+  padding: 0.5rem;
+  border-radius: 50%;
 }
 @media screen and (max-width: 400px) {
   .btn-list {
