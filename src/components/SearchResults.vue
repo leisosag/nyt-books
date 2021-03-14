@@ -6,7 +6,11 @@
           <BookDetails :book="book" />
         </div>
         <div v-if="Object.keys(book).length === 0">
-          <OtherBooks :books="books" />
+          <OtherBooks
+            :books="books"
+            :searchTerm="searchTerm"
+            :listSelected="listSelected"
+          />
         </div>
       </div>
     </div>
@@ -20,14 +24,11 @@ import BookDetails from './BookDetails.vue';
 export default {
   name: 'SearchResults',
   components: { OtherBooks, BookDetails },
-  data() {
-    return {
-      isBookSelected: false,
-    };
-  },
   props: {
     book: Object,
     books: Array,
+    searchTerm: String,
+    listSelected: String,
   },
 };
 </script>

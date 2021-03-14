@@ -1,7 +1,11 @@
 <template>
   <div class="container">
-    <h4>Sorry! We couldn't find the book you were looking for</h4>
-    <h4>Here's some others that you might be interested in</h4>
+    <h4>
+      Sorry! We couldn't find {{ searchTerm }} on the {{ listSelected }} list
+    </h4>
+    <h4>
+      Here's some other books from that list that you might be interested in
+    </h4>
     <div class="grid-container my-3">
       <BookCard v-for="(book, index) in books" :key="index" :book="book" />
     </div>
@@ -15,6 +19,8 @@ export default {
   components: { BookCard },
   props: {
     books: Array,
+    searchTerm: String,
+    listSelected: String,
   },
 };
 </script>

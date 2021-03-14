@@ -15,7 +15,13 @@
           Searching on: {{ showSelectedList }}
         </h3>
         <SearchBar v-if="isListSelected" @termSubmit="onTermSubmit" />
-        <SearchResults v-if="isSearchCompleted" :book="book" :books="books" />
+        <SearchResults
+          v-if="isSearchCompleted"
+          :book="book"
+          :books="books"
+          :searchTerm="searchTerm"
+          :listSelected="listSelected"
+        />
       </div>
     </div>
   </div>
@@ -38,6 +44,7 @@ export default {
       books: [],
       book: {},
       listSelected: '',
+      searchTerm: '',
     };
   },
   props: {
@@ -65,6 +72,7 @@ export default {
     // filter books by title or author
     onTermSubmit(searchTerm) {
       this.isSearchCompleted = true;
+      this.searchTerm = searchTerm;
       const book = this.books.find(
         (book) =>
           book.title === searchTerm.toUpperCase() ||
