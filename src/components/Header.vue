@@ -1,7 +1,7 @@
 <template>
   <div class="container pt-3">
     <div
-      class="row my-3 d-flex flex-column align-items-center justify-content-center"
+      class="row m-3 d-flex flex-column align-items-center justify-content-center"
     >
       <img src="../assets/logo.png" alt="logo" />
       <h1 class="pt-3">The New York Times Best Sellers</h1>
