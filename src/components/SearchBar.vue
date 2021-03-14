@@ -1,15 +1,25 @@
 <template>
-  <div class="container py-3 d-flex justify-content-center">
-    <div class="row d-flex justify-content-center">
-      <form @submit.prevent="onSubmit" class="form-inline">
+  <div class="container py-3">
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <p>
+          Category selected: <span>{{ categorySelected }}</span>
+        </p>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <form @submit.prevent="onInput" class="form-inline">
         <label for="searchInput" class="sr-only">Search books</label>
         <input
           type="text"
-          class="form-control mr-sm-2"
+          onfocus="this.value=''"
+          class="form-control mr-2"
           id="searchInput"
           placeholder="Search books by title or author"
         />
-        <button type="submit" class="btn btn-color my-2 my-sm-0">Search</button>
+        <button type="submit" class="btn btn-color my-2 my-sm-0">
+          <i class="fas fa-search pr-2"></i>Search
+        </button>
       </form>
     </div>
   </div>
@@ -18,9 +28,12 @@
 <script>
 export default {
   name: 'SearchBar',
+  props: {
+    categorySelected: String,
+  },
   methods: {
-    onSubmit(e) {
-      this.$emit('termSubmit', e.target[0].value);
+    onInput(e) {
+      this.$emit('searchTerm', e.target[0].value);
     },
   },
 };
@@ -28,19 +41,14 @@ export default {
 
 <style>
 input[type='text'] {
-  width: 300px !important;
+  min-width: 300px !important;
   border-radius: 0.8rem;
+  padding: 0.5rem 1rem;
+  height: 2.5rem;
 }
-.btn-color {
-  background-color: var(--primary);
-  color: var(--white);
-  transition: 0.5s all;
-  border-radius: 0.8rem;
-}
-.btn-color:hover {
-  border: 1px solid var(--primary);
+span {
   color: var(--primary);
-  background-color: transparent;
+  font-weight: 600;
 }
 @media screen and (max-width: 500px) {
   input {

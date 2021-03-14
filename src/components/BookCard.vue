@@ -1,7 +1,12 @@
 <template>
   <div class="container my-3">
-    <div class="card" style="width: 10rem">
-      <img :src="imgUrl" class="card-img-top" :alt="book.title" />
+    <div class="card">
+      <img
+        @click="bookCardSelect"
+        :src="book.book_image"
+        class="card-img-top"
+        :alt="book.title"
+      />
       <div class="overlay">
         <div class="ranking">
           <i class="fas fa-star"></i>
@@ -18,9 +23,9 @@ export default {
   props: {
     book: Object,
   },
-  computed: {
-    imgUrl() {
-      return this.book.book_image;
+  methods: {
+    bookCardSelect(e) {
+      this.$emit('bookCardSelected', e.target.alt);
     },
   },
 };
@@ -36,6 +41,9 @@ a {
 .card {
   border: none;
   position: relative;
+  background-color: transparent;
+  border-radius: 1rem;
+  box-shadow: 7px 7px 10px 0px var(--shadows);
 }
 .card:hover {
   cursor: pointer;
@@ -48,8 +56,8 @@ a {
 }
 .overlay {
   position: absolute;
-  top: -40%;
-  right: -35%;
+  top: -35%;
+  right: -30%;
   width: 100%;
   height: 100%;
   display: flex;
@@ -58,14 +66,19 @@ a {
 }
 .ranking {
   display: flex;
+  background-color: var(--black-transparent);
+  padding: 0.8rem 0.6rem;
+  border-radius: 50%;
 }
 .ranking h5 {
   color: var(--white);
   font-weight: 600;
   font-size: 15px;
+  margin-top: 0.1rem;
 }
 .fa-star {
   color: yellow;
   margin-right: 0.3rem;
+  margin-top: 0.1rem;
 }
 </style>

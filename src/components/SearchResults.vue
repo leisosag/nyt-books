@@ -2,33 +2,36 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12">
-        <div v-if="Object.keys(book).length > 0">
-          <BookDetails :book="book" />
-        </div>
-        <div v-if="Object.keys(book).length === 0">
-          <OtherBooks
-            :books="books"
-            :searchTerm="searchTerm"
-            :listSelected="listSelected"
-          />
-        </div>
+        <BookDetails v-if="Object.keys(book).length > 0" :book="book" />
+        <OtherBooks
+          v-if="Object.keys(book).length === 0"
+          :searchTerm="searchTerm"
+          :categorySelected="categorySelected"
+          :someBooks="someBooks"
+          @bookCardSelected="bookCardSelected"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import OtherBooks from './OtherBooks.vue';
 import BookDetails from './BookDetails.vue';
+import OtherBooks from './OtherBooks.vue';
 
 export default {
   name: 'SearchResults',
-  components: { OtherBooks, BookDetails },
+  components: { BookDetails, OtherBooks },
   props: {
-    book: Object,
-    books: Array,
+    book: {},
+    someBooks: Array,
     searchTerm: String,
-    listSelected: String,
+    categorySelected: String,
+  },
+  methods: {
+    bookCardSelected(title) {
+      this.$emit('bookCardSelected', title);
+    },
   },
 };
 </script>

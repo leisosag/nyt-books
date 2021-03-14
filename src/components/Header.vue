@@ -4,7 +4,7 @@
       class="row m-3 d-flex flex-column align-items-center justify-content-center"
     >
       <img src="../assets/logo.png" alt="logo" />
-      <h1 class="pt-3">The New York Times Best Sellers</h1>
+      <h1 class="pt-3 text-center">The New York Times Best Sellers</h1>
     </div>
   </div>
 </template>
@@ -17,11 +17,11 @@ export default {
 
 <style scoped>
 h1 {
-  font-family: 'Shippori Mincho B1', serif;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-weight: 600;
 }
 img {
-  width: 250px;
+  width: 150px;
   height: auto;
 }
 </style>

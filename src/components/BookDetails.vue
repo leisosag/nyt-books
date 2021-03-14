@@ -1,33 +1,33 @@
 <template>
-  <div class="container">
-    <div class="row details-container">
-      <div class="col-md-4 col-img">
-        <img :src="imgUrl" class="card-img" :alt="book.title" />
-      </div>
-      <div
-        class="col-md-8 col-details d-flex flex-column justify-content-around"
-      >
-        <div class="ranking">
-          <i class="fas fa-star"></i>
-          <h5>{{ book.rank }}</h5>
-        </div>
-        <p>Weeks on the list: {{ book.weeks_on_list }}</p>
-        <h5 class="card-title">{{ book.title }}</h5>
-        <p class="card-text card-author">By {{ book.author }}</p>
-        <p class="card-text">{{ book.description }}</p>
-        <p>Publisher: {{ book.publisher }}</p>
-        <div class="row">
-          <div class="col-6">
-            <a :href="book.amazon_product_url" target="_blank">
-              <button class="btn btn-color btn-block mb-1">
-                Buy on Amazon
-              </button>
-            </a>
+  <div class="container py-3">
+    <div class="row justify-content-center">
+      <div class="card" style="width: 600px">
+        <div class="row no-gutters">
+          <div class="col-sm-5">
+            <img :src="imgUrl" class="card-img" :alt="book.title" />
           </div>
-          <div class="col-6">
-            <a :href="url" target="_blank">
-              <button class="btn btn-color btn-block">More info</button>
-            </a>
+          <div class="col-sm-7">
+            <div class="card-body">
+              <div class="ranking">
+                <i class="fas fa-star"></i>
+                <h5>{{ book.rank }}</h5>
+              </div>
+              <p>Weeks on the list: {{ book.weeks_on_list }}</p>
+              <h5 class="card-title">{{ book.title }}</h5>
+              <p class="card-text card-author">By {{ book.author }}</p>
+              <p class="card-text">{{ book.description }}</p>
+              <p>Publisher: {{ book.publisher }}</p>
+              <a :href="book.amazon_product_url" target="_blank">
+                <button class="btn btn-color btn-block mb-1">
+                  <i class="fab fa-amazon pr-2"></i>Buy on Amazon
+                </button>
+              </a>
+              <a :href="url" target="_blank">
+                <button class="btn btn-color btn-block">
+                  <i class="fab fa-google pr-2"></i>More info
+                </button>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -74,9 +74,11 @@ export default {
 </script>
 
 <style scoped>
-.details-container {
-  background-color: var(--background-grey);
+.card {
+  background-color: var(--background-white);
+  border-radius: 1rem;
   padding: 1rem;
+  box-shadow: 7px 7px 10px 0px var(--shadows);
 }
 .ranking {
   display: flex;
@@ -85,6 +87,7 @@ export default {
 .fa-star {
   color: yellow;
   margin-right: 0.3rem;
+  margin-top: 0.2rem;
 }
 .ranking h5 {
   font-weight: 600;
@@ -100,14 +103,9 @@ export default {
 }
 .btn-color {
   margin: 0;
+  box-shadow: 7px 7px 10px 0px var(--shadows-primary);
 }
 a {
   text-decoration: none;
-}
-@media screen and (max-width: 765px) {
-  .col-img,
-  .col-details {
-    padding-bottom: 1rem;
-  }
 }
 </style>
