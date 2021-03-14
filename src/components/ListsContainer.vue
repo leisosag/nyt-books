@@ -26,7 +26,6 @@ import axios from 'axios';
 import List from './List.vue';
 import SearchBar from './SearchBar.vue';
 import SearchResults from './SearchResults.vue';
-
 const API_KEY = 'hDbHV2PLk0RpGABiH2YmctongMla01dX';
 
 export default {
@@ -50,7 +49,7 @@ export default {
     },
   },
   methods: {
-    // defines the list from which the user wants to filter
+    // gets the selected list's books from the API
     onListSelected(listName) {
       this.isListSelected = true;
       axios
@@ -59,7 +58,7 @@ export default {
         )
         .then((response) => (this.books = response.data.results.books));
 
-      // list selected
+      // formats the selected list's name
       const stringArr = listName.split('-');
       this.listSelected = stringArr.join(' ');
     },

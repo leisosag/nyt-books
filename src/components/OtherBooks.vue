@@ -16,15 +16,5 @@ export default {
   props: {
     books: Array,
   },
-  methods: {
-    getSomeBooks(books) {
-      console.log(books);
-    },
-  },
-  mounted() {
-    this.getSomeBooks(this.books);
-  },
 };
 </script>
-
-<style></style>

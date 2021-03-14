@@ -23,14 +23,13 @@ button {
   padding: 0.8rem;
 }
 .btn-list {
-  background-color: #f0f0f0;
+  background-color: var(--background-grey);
   color: var(--black);
   border-radius: 0.8rem;
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  /*min-height: 4rem;*/
 }
 .fa-book-open {
   background-color: var(--white);

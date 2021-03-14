@@ -1,7 +1,10 @@
 <template>
-  <div class="container">
-    <div class="row my-3 justify-content-center">
-      <h1 class="text-center text-uppercase">NYTimes Best Sellers</h1>
+  <div class="container pt-3">
+    <div
+      class="row my-3 d-flex flex-column align-items-center justify-content-center"
+    >
+      <img src="../assets/logo.png" alt="logo" />
+      <h1 class="pt-3">The New York Times Best Sellers</h1>
     </div>
   </div>
 </template>
@@ -12,10 +15,13 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 h1 {
-  color: var(--primary);
-  font-weight: 600;
-  font-size: 3rem;
+  font-family: 'Shippori Mincho B1', serif;
+  font-size: 1.5rem;
+}
+img {
+  width: 250px;
+  height: auto;
 }
 </style>

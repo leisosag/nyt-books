@@ -1,6 +1,6 @@
 <template>
   <div class="container my-3">
-    <div @click="onBookSelect" class="card" style="width: 10rem">
+    <div class="card" style="width: 10rem">
       <img :src="imgUrl" class="card-img-top" :alt="book.title" />
       <div class="overlay">
         <div class="ranking">
@@ -23,30 +23,6 @@ export default {
       return this.book.book_image;
     },
   },
-  data() {
-    return {
-      url: '',
-    };
-  },
-  methods: {
-    modifyQueryParams(str, sep) {
-      const stringArr = str.toLowerCase().split(sep);
-      return stringArr.join('+');
-    },
-    createGoogleLink(str1, str2) {
-      return `https://www.google.com/search?q=${str1}+${str2}`;
-    },
-    onBookSelect() {
-      this.$emit('bookSelect', this.book);
-    },
-  },
-  mounted() {
-    const space = ' ';
-    const title = this.modifyQueryParams(this.book.title, space);
-    const author = this.modifyQueryParams(this.book.author, space);
-    const googleURL = this.createGoogleLink(title, author);
-    return (this.url = googleURL);
-  },
 };
 </script>
 
@@ -57,10 +33,15 @@ export default {
 a {
   text-decoration: none;
 }
-/* nueva card */
 .card {
   border: none;
   position: relative;
+}
+.card:hover {
+  cursor: pointer;
+}
+.card img {
+  border-radius: 1rem;
 }
 .card-img-top img {
   height: 500px;
@@ -86,11 +67,5 @@ a {
 .fa-star {
   color: yellow;
   margin-right: 0.3rem;
-}
-.card:hover {
-  cursor: pointer;
-}
-.card img {
-  border-radius: 1rem;
 }
 </style>

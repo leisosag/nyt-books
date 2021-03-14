@@ -9,9 +9,7 @@
           id="searchInput"
           placeholder="Search books by title or author"
         />
-        <button type="submit" class="btn btn-color my-2 my-sm-0">
-          Search
-        </button>
+        <button type="submit" class="btn btn-color my-2 my-sm-0">Search</button>
       </form>
     </div>
   </div>
@@ -31,7 +29,6 @@ export default {
 <style>
 input[type='text'] {
   width: 300px !important;
-  background-color: var(--background-grey);
   border-radius: 0.8rem;
 }
 .btn-color {

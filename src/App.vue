@@ -15,7 +15,6 @@ import axios from 'axios';
 import Header from './components/Header.vue';
 import ListsContainer from './components/ListsContainer.vue';
 import Spinner from './components/Spinner.vue';
-
 const API_KEY = 'hDbHV2PLk0RpGABiH2YmctongMla01dX';
 
 export default {
@@ -28,7 +27,7 @@ export default {
     };
   },
   methods: {
-    // gets lists results from the API
+    // gets the list's names from the API
     onLoad() {
       axios
         .get(
@@ -47,14 +46,13 @@ export default {
 </script>
 
 <style>
-/* Titles: Baskerville: 400, 600
-Text: Source Sans Pro: 300, 400, 700 */
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+Pro:wght@300;400;700&display=swap');
+/* Titles: font-family: 'Shippori Mincho B1', serif; 500
+Text: font-family: 'Source Sans Pro', sans-serif;  400, 600 */
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500&family=Source+Sans+Pro:wght@400;600&display=swap');
 :root {
   --background: #fff;
-  --background-grey: #fafafa;
+  --background-grey: #f0f0f0;
   --primary: #4a47a3;
-  --contrast: #00c89a;
   --black: #393746;
 }
 body {

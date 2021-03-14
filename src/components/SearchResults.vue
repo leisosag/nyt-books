@@ -8,9 +8,6 @@
         <div v-if="Object.keys(book).length === 0">
           <OtherBooks :books="books" />
         </div>
-        <div v-if="isBookSelected">
-          <BookDetails :book="selectedBook" />
-        </div>
       </div>
     </div>
   </div>
@@ -26,18 +23,11 @@ export default {
   data() {
     return {
       isBookSelected: false,
-      selectedBook: {},
     };
   },
   props: {
     book: Object,
     books: Array,
-  },
-  methods: {
-    onBookSelect(book) {
-      this.isBookSelected = true;
-      this.selectedBook = book;
-    },
   },
 };
 </script>
