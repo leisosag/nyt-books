@@ -1,30 +1,32 @@
 <template>
   <div class="container">
     <div class="row details-container">
-      <div class="col-md-4">
+      <div class="col-md-4 col-img">
         <img :src="imgUrl" class="card-img" :alt="book.title" />
       </div>
-      <div class="col-md-8 d-flex flex-column justify-content-around">
+      <div
+        class="col-md-8 col-details d-flex flex-column justify-content-around"
+      >
         <div class="ranking">
           <i class="fas fa-star"></i>
           <h5>{{ book.rank }}</h5>
         </div>
-        <p>{{ book.weeks_on_list }} weeks on the list</p>
+        <p>Weeks on the list: {{ book.weeks_on_list }}</p>
         <h5 class="card-title">{{ book.title }}</h5>
         <p class="card-text card-author">By {{ book.author }}</p>
         <p class="card-text">{{ book.description }}</p>
         <p>Publisher: {{ book.publisher }}</p>
         <div class="row">
-          <div class="col">
+          <div class="col-6">
             <a :href="book.amazon_product_url" target="_blank">
               <button class="btn btn-color btn-block mb-1">
                 Buy on Amazon
               </button>
             </a>
           </div>
-          <div class="col">
+          <div class="col-6">
             <a :href="url" target="_blank">
-              <button class="btn btn-color btn-block">Search on Google</button>
+              <button class="btn btn-color btn-block">More info</button>
             </a>
           </div>
         </div>
@@ -78,6 +80,7 @@ export default {
 }
 .ranking {
   display: flex;
+  margin-bottom: -10px;
 }
 .fa-star {
   color: yellow;
@@ -100,5 +103,11 @@ export default {
 }
 a {
   text-decoration: none;
+}
+@media screen and (max-width: 765px) {
+  .col-img,
+  .col-details {
+    padding-bottom: 1rem;
+  }
 }
 </style>

@@ -28,7 +28,6 @@ button {
   border-radius: 0.8rem;
   border: none;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 .fa-book-open {
