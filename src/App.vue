@@ -91,7 +91,7 @@ export default {
       }
       this.isSearchCompleted = true;
     },
-    // when the user clicks on a recomended book it queries the search with that title
+    // when the user clicks on a recommended book, queries the search with that title
     bookCardSelected(title) {
       this.filterBooks(title);
     },
