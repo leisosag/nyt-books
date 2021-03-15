@@ -29,9 +29,15 @@ export default {
   name: 'OtherBooks',
   components: { BookCard },
   props: {
-    someBooks: Array,
-    searchTerm: String,
-    categorySelected: String,
+    someBooks: {
+      type: Array,
+    },
+    searchTerm: {
+      type: String,
+    },
+    categorySelected: {
+      type: String,
+    },
   },
   methods: {
     bookCardSelected(title) {

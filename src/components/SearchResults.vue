@@ -23,10 +23,21 @@ export default {
   name: 'SearchResults',
   components: { BookDetails, OtherBooks },
   props: {
-    book: {},
-    someBooks: Array,
-    searchTerm: String,
-    categorySelected: String,
+    book: {
+      type: Object,
+      required: true,
+    },
+    someBooks: {
+      type: Array,
+    },
+    searchTerm: {
+      type: String,
+      required: true,
+    },
+    categorySelected: {
+      type: String,
+      required: true,
+    },
   },
   methods: {
     bookCardSelected(title) {
@@ -35,5 +46,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

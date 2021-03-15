@@ -1,6 +1,5 @@
 <template>
   <button
-    :class="{ active: isSelected, inactive: (isSelected = false) }"
     @click="onClick(category.list_name_encoded, category.list_name)"
     class="btn-list"
   >
@@ -11,18 +10,15 @@
 <script>
 export default {
   name: 'Category',
-  data() {
-    return {
-      isSelected: false,
-    };
-  },
   props: {
-    category: Object,
+    category: {
+      type: Object,
+      required: true,
+    },
   },
   methods: {
     onClick(value, category) {
       this.$emit('selectedCategory', value, category);
-      this.isSelected = !this.isSelected;
     },
   },
 };

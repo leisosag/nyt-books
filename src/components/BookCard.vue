@@ -21,7 +21,10 @@
 export default {
   name: 'BookCard',
   props: {
-    book: Object,
+    book: {
+      type: Object,
+      required: true,
+    },
   },
   methods: {
     bookCardSelect(e) {

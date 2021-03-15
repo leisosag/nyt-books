@@ -7,7 +7,7 @@
         </p>
       </div>
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center container">
       <form @submit.prevent="onInput" class="form-inline">
         <label for="searchInput" class="sr-only">Search books</label>
         <input
@@ -52,7 +52,7 @@ span {
 }
 @media screen and (max-width: 500px) {
   input {
-    width: 200px !important;
+    width: 150px !important;
   }
 }
 </style>

@@ -4,7 +4,7 @@
       <div class="card" style="width: 600px">
         <div class="row no-gutters">
           <div class="col-sm-5">
-            <img :src="imgUrl" class="card-img" :alt="book.title" />
+            <img :src="book.book_image" class="card-img" :alt="book.title" />
           </div>
           <div class="col-sm-7">
             <div class="card-body">
@@ -39,11 +39,9 @@
 export default {
   name: 'BookDetails',
   props: {
-    book: Object,
-  },
-  computed: {
-    imgUrl() {
-      return this.book.book_image;
+    book: {
+      type: Object,
+      required: true,
     },
   },
   data() {

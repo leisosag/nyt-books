@@ -1,6 +1,8 @@
 .DS_Store
 node_modules
 /dist
+API_KEY.js
+.env
 
 
 # local env files

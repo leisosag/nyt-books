@@ -23,7 +23,10 @@ export default {
   name: 'Categories',
   components: { Category },
   props: {
-    categories: Array,
+    categories: {
+      type: Array,
+      required: true,
+    },
   },
   methods: {
     onCategorySelected(categorySearch, categoryName) {
