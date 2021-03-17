@@ -54,14 +54,18 @@ export default {
   methods: {
     // gets categories from the API
     onLoad() {
-      axios
-        .get(
-          `https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${API_KEY}`
-        )
-        .then((response) => {
-          this.categories = response.data.results.slice(0, 10);
-          this.isLoading = false;
-        });
+      try {
+        axios
+          .get(
+            `https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${API_KEY}`
+          )
+          .then((response) => {
+            this.categories = response.data.results.slice(0, 10);
+            this.isLoading = false;
+          });
+      } catch (error) {
+        console.error(error);
+      }
     },
     // gets books from the API
     onCategorySelected(categorySearch, categoryName) {
@@ -69,11 +73,15 @@ export default {
       this.isCategorySelected = true;
       this.isSearchCompleted = false;
 
-      axios
-        .get(
-          `https://api.nytimes.com/svc/books/v3/lists/current/${categorySearch}.json?api-key=${API_KEY}`
-        )
-        .then((response) => (this.books = response.data.results.books));
+      try {
+        axios
+          .get(
+            `https://api.nytimes.com/svc/books/v3/lists/current/${categorySearch}.json?api-key=${API_KEY}`
+          )
+          .then((response) => (this.books = response.data.results.books));
+      } catch (error) {
+        console.error(error);
+      }
     },
     // filter books by title or author
     filterBooks(searchTerm) {

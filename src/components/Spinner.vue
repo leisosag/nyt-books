@@ -1,7 +1,10 @@
 <template>
   <div class="container">
-    <div class="row justify-content-center">
+    <div
+      class="row d-flex flex-column justify-content-center align-items-center"
+    >
       <cube-spin></cube-spin>
+      <p class="pt-3">Loading...</p>
     </div>
   </div>
 </template>
