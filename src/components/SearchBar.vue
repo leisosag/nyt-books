@@ -3,7 +3,8 @@
     <div class="row justify-content-center">
       <div class="col-10">
         <p>
-          Category selected: <span>{{ categorySelected }}</span>
+          Category selected:
+          <span>{{ categorySelected.categoryName }}</span>
         </p>
       </div>
     </div>
@@ -29,7 +30,7 @@
 export default {
   name: 'SearchBar',
   props: {
-    categorySelected: String,
+    categorySelected: Object,
   },
   methods: {
     onInput(e) {

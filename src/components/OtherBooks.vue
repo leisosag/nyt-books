@@ -4,10 +4,11 @@
       <div class="col-10">
         <p>
           Sorry! We couldn't find <span>{{ searchTerm }}</span> on the
-          <span>{{ categorySelected }}</span> category
+          <span>{{ categorySelected.categoryName }}</span> category
         </p>
         <h3 class="pt-3">
-          Some other books on <span>{{ categorySelected }}</span>
+          Some other books on
+          <span>{{ categorySelected.categoryName }}</span>
         </h3>
         <div class="grid-container my-3">
           <BookCard

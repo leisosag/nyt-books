@@ -32,11 +32,9 @@ export default {
     },
     searchTerm: {
       type: String,
-      required: true,
     },
     categorySelected: {
-      type: String,
-      required: true,
+      type: Object,
     },
   },
   methods: {

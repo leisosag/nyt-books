@@ -10,7 +10,7 @@
         @selectedCategory="onCategorySelected"
       />
       <SearchBar
-        v-if="isCategorySelected"
+        v-if="categorySelected.isCategorySelected"
         @searchTerm="filterBooks"
         :categorySelected="categorySelected"
       />
@@ -27,85 +27,69 @@
 </template>
 
 <script>
-import axios from 'axios';
 import Header from './components/Header.vue';
 import Spinner from './components/Spinner.vue';
 import Categories from './components/Categories.vue';
 import SearchBar from './components/SearchBar.vue';
 import SearchResults from './components/SearchResults.vue';
-const API_KEY = 'hDbHV2PLk0RpGABiH2YmctongMla01dX';
+
+// vuex store
+//import store from './store';
 
 export default {
   name: 'App',
   components: { Header, Spinner, Categories, SearchBar, SearchResults },
   data() {
     return {
-      isLoading: true,
-      isCategorySelected: false,
       isSearchCompleted: false,
-      categories: [],
-      books: [],
-      categorySelected: '',
       searchTerm: '',
-      book: {},
-      someBooks: [],
     };
   },
-  methods: {
-    // gets categories from the API
-    onLoad() {
-      try {
-        axios
-          .get(
-            `https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${API_KEY}`
-          )
-          .then((response) => {
-            this.categories = response.data.results.slice(0, 10);
-            this.isLoading = false;
-          });
-      } catch (error) {
-        console.error(error);
-      }
+  computed: {
+    isLoading() {
+      return this.$store.getters.getLoadingState;
     },
+    categorySelected() {
+      return this.$store.getters.getCategorySelected;
+    },
+    categories() {
+      return this.$store.getters.getCategories;
+    },
+    books() {
+      return this.$store.getters.getBooks;
+    },
+    book() {
+      return this.$store.getters.getBookDetails;
+    },
+    someBooks() {
+      return this.$store.getters.getSomeBooks;
+    },
+  },
+  methods: {
     // gets books from the API
     onCategorySelected(categorySearch, categoryName) {
-      this.categorySelected = categoryName;
-      this.isCategorySelected = true;
+      const categoryParams = {
+        categoryName,
+        categorySearch,
+      };
       this.isSearchCompleted = false;
-
-      try {
-        axios
-          .get(
-            `https://api.nytimes.com/svc/books/v3/lists/current/${categorySearch}.json?api-key=${API_KEY}`
-          )
-          .then((response) => (this.books = response.data.results.books));
-      } catch (error) {
-        console.error(error);
-      }
+      this.$store.dispatch('fetchBooks', categoryParams);
     },
     // filter books by title or author
     filterBooks(searchTerm) {
       this.searchTerm = searchTerm;
-      const book = this.books.find(
-        (book) =>
-          book.title === searchTerm.toUpperCase() ||
-          book.author.toLowerCase() === searchTerm.toLowerCase()
-      );
-      if (book) {
-        this.book = book;
-      } else {
-        this.book = {};
-        this.someBooks = this.books.slice(0, 4);
-      }
-      this.isSearchCompleted = true;
+      this.$store
+        .dispatch('fetchBookDetails', searchTerm)
+        .then((this.isSearchCompleted = true));
     },
     // when the user clicks on a recommended book, queries the search with that title
     bookCardSelected(title) {
       this.filterBooks(title);
     },
   },
+  // gets categories from the API
   created() {
-    this.onLoad();
+    this.$store.dispatch('fetchCategories');
   },
 };
 </script>
