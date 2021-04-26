@@ -2,17 +2,13 @@
   <div class="container py-3">
     <div class="row justify-content-center">
       <div class="col-10">
-        <p>
-          Sorry! We couldn't find <span>{{ searchTerm }}</span> on the
-          <span>{{ categorySelected.categoryName }}</span> category
-        </p>
-        <h3 class="pt-3">
-          Some other books on
+        <h2 class="pt-3">
+          More Books on
           <span>{{ categorySelected.categoryName }}</span>
-        </h3>
+        </h2>
         <div class="grid-container my-3">
           <BookCard
-            v-for="(book, index) in someBooks"
+            v-for="(book, index) in books"
             :key="index"
             :book="book"
             @bookCardSelected="bookCardSelected"
@@ -24,22 +20,18 @@
 </template>
 
 <script>
-import BookCard from './BookCard.vue';
+import BookCard from '../components/BookCard.vue';
 
 export default {
-  name: 'OtherBooks',
-  components: { BookCard },
   props: {
-    someBooks: {
+    books: {
       type: Array,
-    },
-    searchTerm: {
-      type: String,
     },
     categorySelected: {
       type: Object,
     },
   },
+  components: { BookCard },
   methods: {
     bookCardSelected(title) {
       this.$emit('bookCardSelected', title);
